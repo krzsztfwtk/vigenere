@@ -54,6 +54,7 @@ make
 A test script (`test.sh`) is provided to test the program with the included sample files (`frankenstein.txt` and `hamlet.txt`). The script runs the program with relevant options. To run the test script, execute the following command:
 
 ```bash
+chmod +x test.sh 
 ./test.sh
 ```
 
@@ -68,4 +69,4 @@ make
 make clean
 ```
 
-This will compile the program and create an executable file (`vigenere`) in the `decryption/` directory. The program can be run from this directory using the command-line switches described above.
+This will compile the program and create an executable file. The program can be run using the command-line params described above.
