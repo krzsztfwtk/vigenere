@@ -1,3 +1,4 @@
+*
 *.o
 *.a
 *.so
@@ -16,3 +17,6 @@
 *.pyo
 *.rej
 *.DS_Store
+*.enc
+*.dec
+*.key
