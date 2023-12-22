@@ -1,22 +1,15 @@
+# Ignore everything
 *
-*.o
-*.a
-*.so
-*.dll
-*.dylib
-*.exe
-*.out
-*.app
-*.bin
-*.class
-*.obj
-*.swp
-*.swo
-*.bak
-*.pyc
-*.pyo
-*.rej
-*.DS_Store
-*.enc
-*.dec
-*.key
+
+# But not these files...
+!.gitignore
+!*.c
+!*.cpp
+!*.h
+!*.hpp
+!*.md
+!*.txt
+!*.py
+!*.sh
+!Makefile
+!Doxyfile
