@@ -13,3 +13,6 @@
 !*.sh
 !Makefile
 !Doxyfile
+
+# Do not ignore directories
+!*/
