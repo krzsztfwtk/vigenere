@@ -1,6 +1,6 @@
 # VARIABLES:
 CXX=g++
-CXXFLAGS=-std=c++20 -O3 -pedantic-errors
+CXXFLAGS=-std=c++23 -O3 -pedantic-errors
 
 # SOURCES AND EXECUTABLE
 SOURCES=$(wildcard *.cpp)

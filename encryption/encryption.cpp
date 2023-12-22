@@ -67,7 +67,7 @@ int main(int n, char* argv[])
         "-i input file with text\n"
         "-o output file with encrypted text\n"
         "-k input string with key\n\n"
-        "example: encryption -i text.txt -o encrypted_text.txt -k \"secretkey\"\n";
+        "example: encryption -i text.txt -o encrypted_text.txt -k secretkey\n";
 
     std::string key = "";
 
