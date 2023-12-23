@@ -29,12 +29,14 @@ Mode determineMode(const std::string& flag);
 /// @param[in] n Number of command line arguments passed to the main function.
 /// @param[in] argv Pointer to an array of command line arguments.
 /// @return True if the necessary parameters are provided and valid for the selected mode, otherwise false.
-bool paramsEntry(std::string& input_filename,
+bool paramsEntry(
+	std::string& input_filename,
 	std::string& source_filename,
 	std::string& key_filename,
 	std::string& output_filename,
 	Mode& mode,
-	const int n, char* argv[]);
+	int argc, char* argv[]	
+);
 
 
 

@@ -21,9 +21,11 @@ Mode determineMode(const std::string& flag) {
     return Mode::UNDEFINED;
 }
 
-bool paramsEntry(int argc, char* argv[], 
-                 std::string& input_filename, std::string& source_filename,
-                 std::string& key_filename, std::string& output_filename, Mode& mode) {
+bool paramsEntry(
+		std::string& input_filename, std::string& source_filename,
+		std::string& key_filename, std::string& output_filename, 
+		Mode& mode, int argc, char* argv[]
+	) {
     mode = Mode::UNDEFINED;
 
     for (int i = 1; i < argc; i++) {
