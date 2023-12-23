@@ -34,26 +34,25 @@ int main(int argc, char* argv[]) {
     if (!input_file)
 	{
 		std::cout << "ERROR: There is no file: " << input_filename << std::endl;
-		std::cout << configuration::manual;
-		return 0;
+		successful = false;
 	}
 
-	// std::ifstream source_file(source_filename);
+    if (mode == Mode::BREAK) {
+        std::ifstream source_file(source_filename);
 
-	// if (!source_file)
-	// {
-	// 	std::cout << "ERROR: There is no file: " << source_filename << std::endl;
-	// 	std::cout << configuration::manual;
-	// 	return 0;
-	// }
+        if (!source_file)
+        {
+            std::cout << "ERROR: There is no file: " << source_filename << std::endl;
+            successful = false;
+        }
+    }
 
 	std::ofstream key_file(key_filename);
 
 	if (!key_file)
 	{
 		std::cout << "ERROR: There is no file: " << key_filename << std::endl;
-		std::cout << configuration::manual;
-		return 0;
+		successful = false;
 	}
 
 	std::ofstream output_file(output_filename);
@@ -61,9 +60,12 @@ int main(int argc, char* argv[]) {
 	if (!output_file)
 	{
 		std::cout << "ERROR: There is no file: " << output_filename << std::endl;
-		std::cout << configuration::manual;
-		return 0;
+		successful = false;
 	}
+
+    if (!successful) {
+        return 0;
+    }
 
     //params entry ends
 
