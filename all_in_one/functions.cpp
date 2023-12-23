@@ -285,3 +285,62 @@ void decryptFile(std::ifstream& encrypted_file,
 		output_file << line;
 	}
 }
+
+void decryptFile(std::ifstream& encrypted_file,
+	std::ofstream& output_file, std::ifstream& key_file)
+{
+	std::string key;
+    key_file >> key;
+
+	decryptFile(encrypted_file, output_file, key);
+}
+
+
+void encryptFile(std::ifstream& input_file,
+	std::ofstream& output_file, const std::string& key)
+{
+	input_file.clear();
+	input_file.seekg(0);
+
+	std::string line;
+	int count = 0;
+	int key_length = key.length();
+
+	while (std::getline(input_file, line))
+	{
+		for (char& c : line)
+		{
+			if ((int)c < 0)
+			{
+				continue;
+			}
+
+			if (isalpha(c)) //checks if char is in alphabet (no need to decrypt non-alpha chars)
+			{
+				c = tolower(c);
+				unsigned int shift = (int)tolower(key[count % key_length]) - int('a'); // magic numbers :-)
+
+				c += shift;
+
+				if ((int)c < (int)'a')
+				{
+					c += configuration::alphabet_length;  // magic numbers :-)
+				}
+
+				count++;
+			}
+		}
+
+		output_file << line;
+	}
+}
+
+
+void encryptFile(std::ifstream& input_file,
+	std::ofstream& output_file, std::ifstream& key_file)
+{
+    std::string key;
+    key_file >> key;
+	
+	encryptFile(input_file, output_file, key);
+}

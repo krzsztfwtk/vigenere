@@ -93,11 +93,32 @@ char findLetterInKey(std::ifstream& encrypted_file, const std::deque<int>& langu
 std::string findKey(std::ifstream& encrypted_file,
 	const std::deque<int>& language_histogram, const int key_length);
 
-/// @brief Decrypts file encrypted with Vigenere cipher using given key
+/// @brief Decrypts file encrypted with Vigenere cipher using given key in string
 /// @param[in] encrypted_file 
 /// @param[out] output_file 
 /// @param[in] key 
 void decryptFile(std::ifstream& encrypted_file,
 	std::ofstream& output_file, const std::string& key);
+
+/// @brief Decrypts file encrypted with Vigenere cipher using given file with key
+/// @param[in] encrypted_file 
+/// @param[out] output_file 
+/// @param[in] key_file 
+void decryptFile(std::ifstream& encrypted_file,
+	std::ofstream& output_file, std::ifstream& key_file);
+
+/// @brief Encrypts with Vigenere cipher using given key in string
+/// @param[in] input_file_file 
+/// @param[out] output_file 
+/// @param[in] key 
+void encryptFile(std::ifstream& input_file,
+	std::ofstream& output_file, const std::string& key);
+
+/// @brief Encrypts with Vigenere cipher using given file with key
+/// @param[in] input_file_file 
+/// @param[out] output_file 
+/// @param[in] key_file 
+void encryptFile(std::ifstream& input_file,
+	std::ofstream& output_file, std::ifstream& key_file);
 
 #endif

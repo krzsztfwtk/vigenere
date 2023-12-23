@@ -53,14 +53,6 @@ int main(int argc, char* argv[]) {
         }
     }
 
-	std::ofstream key_file(key_filename);
-
-	if (!key_file)
-	{
-		std::cout << "ERROR: There is no file: " << key_filename << std::endl;
-		successful = false;
-	}
-
 	std::ofstream output_file(output_filename);
 
 	if (!output_file)
@@ -78,6 +70,15 @@ int main(int argc, char* argv[]) {
     switch (mode) {
         case Mode::ENCRYPT:
             std::cout << "Encryption mode selected." << std::endl;
+
+            std::ifstream key_file(key_filename);
+
+            if (!key_file)
+            {
+                std::cout << "ERROR: There is no file: " << key_filename << std::endl;
+                successful = false;
+            }
+
             break;
         case Mode::DECRYPT:
             std::cout << "Decryption mode selected." << std::endl;
