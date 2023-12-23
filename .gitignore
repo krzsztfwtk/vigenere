@@ -8,7 +8,6 @@
 !*.h
 !*.hpp
 !*.md
-!*.txt
 !*.py
 !*.sh
 !Makefile
