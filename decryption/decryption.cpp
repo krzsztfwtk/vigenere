@@ -3,10 +3,10 @@
 #include <string>
 #include <sstream>
 
-void decrypt_file(std::ifstream& input_file, std::ofstream& output_file, std::ifstream& key_fle)
+void decrypt_file(std::ifstream& input_file, std::ofstream& output_file, std::ifstream& key_file)
 {
     std::string key;
-    key = key_fle.get();
+    key_file >> key;
     const unsigned int key_length = key.length();
     std::string line = "";
     std::stringstream ss;
