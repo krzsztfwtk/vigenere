@@ -1,4 +1,4 @@
-// vigenere.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// breaker.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>
@@ -55,7 +55,7 @@ int main(int n, char* argv[])
 
 	std::ofstream key_file(key_filename);
 
-	if (!source_file)
+	if (!key_file)
 	{
 		std::cout << "ERROR: There is no file: " << key_filename << std::endl;
 		std::cout << configuration::manual;
