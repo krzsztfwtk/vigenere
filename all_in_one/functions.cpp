@@ -21,9 +21,11 @@ Mode determineMode(const std::string& flag) {
     return Mode::UNDEFINED;
 }
 
-bool paramsEntry(int argc, char* argv[], 
-                 std::string& input_filename, std::string& source_filename,
-                 std::string& key_filename, std::string& output_filename, Mode& mode) {
+bool paramsEntry(
+		std::string& input_filename, std::string& source_filename,
+		std::string& key_filename, std::string& output_filename, 
+		Mode& mode, int argc, char* argv[]
+	) {
     mode = Mode::UNDEFINED;
 
     for (int i = 1; i < argc; i++) {
@@ -282,4 +284,72 @@ void decryptFile(std::ifstream& encrypted_file,
 
 		output_file << line;
 	}
+}
+
+void decryptFile(std::ifstream& encrypted_file,
+	std::ofstream& output_file, std::ifstream& key_file)
+{
+	std::string key;
+    key_file >> key;
+
+	decryptFile(encrypted_file, output_file, key);
+}
+
+
+void encryptFile(std::ifstream& input_file,
+	std::ofstream& output_file, const std::string& key)
+{
+	input_file.clear();
+	input_file.seekg(0);
+
+	std::string line;
+	int count = 0;
+	int key_length = key.length();
+
+	std::stringstream result;
+
+	while (std::getline(input_file, line))
+	{
+		for (char& c : line)
+		{
+			if ((int)c < 0)
+			{
+				continue;
+			}
+
+			std::stringstream result;
+
+			if (isalpha(c)) //checks if char is in alphabet (no need to decrypt non-alpha chars)
+			{
+				c = tolower(c);
+				unsigned int shift = (int)tolower(key[count % key_length]) - int('a'); 
+
+				if ((int)c + shift > (int)'z')
+				{
+					c -= configuration::alphabet_length; 
+				}
+
+				c += shift;
+
+				result << c;
+				count++;
+			}
+
+
+			while (result >> line)
+			{
+				output_file << line;
+			}
+		}
+	}
+}
+
+
+void encryptFile(std::ifstream& input_file,
+	std::ofstream& output_file, std::ifstream& key_file)
+{
+    std::string key;
+    key_file >> key;
+	
+	encryptFile(input_file, output_file, key);
 }
