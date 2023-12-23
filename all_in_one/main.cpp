@@ -55,11 +55,13 @@ int main(int argc, char* argv[]) {
 
     //params entry ends
 
+    std::ifstream key_file;
+
     switch (mode) {
         case Mode::ENCRYPT:
             std::cout << "Encryption mode selected." << std::endl;
 
-            std::ifstream key_file(key_filename);
+            key_file.open(key_filename);
 
             if (!key_file)
             {
