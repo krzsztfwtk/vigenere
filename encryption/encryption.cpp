@@ -3,14 +3,15 @@
 #include <string>
 #include <sstream>
 
-void encrypt_file(std::ifstream& input_file, std::ofstream& output_file, const std::string key)
+void encrypt_file(std::ifstream& input_file, std::ofstream& output_file, std::ifstream& key_file)
 {
+    std::string key;
+    key = key_file.get(); 
     const unsigned int key_length = key.length();
     std::string cipher_text = "";
     unsigned int c = 0;
     std::string line = "";
-    std::stringstream ss
-        ;
+    std::stringstream ss;
     std::stringstream result;
 
 
@@ -49,7 +50,6 @@ void encrypt_file(std::ifstream& input_file, std::ofstream& output_file, const s
             result << z;
             c++;
         }
-
     }
 
     while (result >> line)
@@ -71,11 +71,9 @@ int main(int n, char* argv[])
 
     std::string key = "";
 
-
     std::string input_filename = "";
     std::string key_filename = "";
     std::string output_filename = "";
-
 
     //params entry begins
     {
@@ -97,7 +95,7 @@ int main(int n, char* argv[])
 
             else if (arg == "-k")
             {
-                key = argv[i + 1];
+                key_filename = argv[i + 1];
             }
         }
 
@@ -114,9 +112,9 @@ int main(int n, char* argv[])
 
     std::ifstream input_file(input_filename);
     std::ofstream output_file(output_filename);
+    std::ifstream key_file(key_filename);
 
-    encrypt_file(input_file, output_file, key);
-
+    encrypt_file(input_file, output_file, key_file);
 
     input_file.close();
     output_file.close();
