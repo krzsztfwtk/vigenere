@@ -306,6 +306,8 @@ void encryptFile(std::ifstream& input_file,
 	int count = 0;
 	int key_length = key.length();
 
+	std::stringstream result;
+
 	while (std::getline(input_file, line))
 	{
 		for (char& c : line)
@@ -315,23 +317,30 @@ void encryptFile(std::ifstream& input_file,
 				continue;
 			}
 
+			std::stringstream result;
+
 			if (isalpha(c)) //checks if char is in alphabet (no need to decrypt non-alpha chars)
 			{
 				c = tolower(c);
 				unsigned int shift = (int)tolower(key[count % key_length]) - int('a'); 
 
-				if (c + shift > 'z')
+				if ((int)c + shift > (int)'z')
 				{
 					c -= configuration::alphabet_length; 
 				}
 
 				c += shift;
 
+				result << c;
 				count++;
 			}
-		}
 
-		output_file << line;
+
+			while (result >> line)
+			{
+				output_file << line;
+			}
+		}
 	}
 }
 

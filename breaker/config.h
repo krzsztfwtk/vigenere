@@ -12,7 +12,7 @@ namespace configuration
 	   const int alphabet_length = 'z' - 'a' + 1;
 
 	   const int max_value_in_rescaled_histogram = 10000;
-	   const double max_deviation_for_the_same_language = 2800;
+	   const double max_deviation_for_the_same_language = 1000;
 
 	   const int max_key_length = 5000;
 	   const std::string manual =
