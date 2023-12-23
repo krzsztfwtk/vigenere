@@ -23,6 +23,12 @@ int main(int argc, char* argv[]) {
     bool successful = paramsEntry(input_filename, source_filename, 
         key_filename, output_filename, mode, argc, argv);
 
+    std::cout <<
+		"\ninput_filename:" << input_filename <<
+		"\nsource_filename:" << source_filename <<
+		"\nkey_filename:" << key_filename <<
+		"\noutput_filename:" << output_filename << "\n\n";
+
     if (!successful) {
         std::cout << "\nERROR: Params entry failed\n";
         std::cout << configuration::manual;
@@ -68,7 +74,6 @@ int main(int argc, char* argv[]) {
     }
 
     //params entry ends
-
 
     switch (mode) {
         case Mode::ENCRYPT:
