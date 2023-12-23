@@ -22,7 +22,7 @@ namespace configuration
 		   "-w input file with text in the language of the encrypted text\n"
 		   "-k output file with the found key\n"
 		   "-o output file with decrypted text\n\n"
-		   "example: vigenere -i encrypted.txt "
+		   "example: breaker -i encrypted.txt "
 		   "-w book.txt -k key.txt -o decrypted.txt\n\n";
 }
 

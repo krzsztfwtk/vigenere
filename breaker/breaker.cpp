@@ -20,8 +20,7 @@ int main(int n, char* argv[])
 
 	//params entry begins
 
-	bool good = paramsEntry(input_filename, source_filename,
-		key_filename, output_filename, n, argv);
+	bool successful = paramsEntry(input_filename, source_filename, key_filename, output_filename, n, argv);
 
 	std::cout <<
 		"\ninput_filename:" << input_filename <<
@@ -29,7 +28,7 @@ int main(int n, char* argv[])
 		"\nkey_filename:" << key_filename <<
 		"\noutput_filename:" << output_filename << "\n\n";
 
-	if (good == false)
+	if (successful == false)
 	{
 		std::cout << "\nERROR: Params entry failed\n";
 		std::cout << configuration::manual;
