@@ -6,7 +6,7 @@
 void encrypt_file(std::ifstream& input_file, std::ofstream& output_file, std::ifstream& key_file)
 {
     std::string key;
-    key = key_file.get(); 
+    key_file >> key; 
     const unsigned int key_length = key.length();
     std::string cipher_text = "";
     unsigned int c = 0;

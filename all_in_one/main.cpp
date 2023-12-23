@@ -36,25 +36,13 @@ int main(int argc, char* argv[]) {
     }
 
     std::ifstream input_file(input_filename);
-
     if (!input_file)
 	{
 		std::cout << "ERROR: There is no file: " << input_filename << std::endl;
 		successful = false;
 	}
 
-    if (mode == Mode::BREAK) {
-        std::ifstream source_file(source_filename);
-
-        if (!source_file)
-        {
-            std::cout << "ERROR: There is no file: " << source_filename << std::endl;
-            successful = false;
-        }
-    }
-
 	std::ofstream output_file(output_filename);
-
 	if (!output_file)
 	{
 		std::cout << "ERROR: There is no file: " << output_filename << std::endl;
@@ -80,12 +68,75 @@ int main(int argc, char* argv[]) {
             }
 
             break;
+
         case Mode::DECRYPT:
             std::cout << "Decryption mode selected." << std::endl;
             break;
-        case Mode::BREAK:
+            
+        case Mode::BREAK: {
             std::cout << "Break encryption mode selected." << std::endl;
+
+            std::ifstream source_file(source_filename);
+            if (!source_file) {
+                std::cout << "ERROR: Unable to open source file: " << source_filename << std::endl;
+                return 0;
+            }
+
+            std::ofstream key_file(key_filename);
+            if (!key_file)
+            {
+                std::cout << "ERROR: There is no file: " << key_filename << std::endl;
+                successful = false;
+            }
+
+            std::deque<int> language_histogram = histogramFromFile(source_file, 1, 0);
+            source_file.close();
+            rescaleHistogram(language_histogram);
+
+            std::string key;
+            std::ifstream input_file(input_filename);
+            if (!input_file) {
+                std::cout << "ERROR: Unable to open input file: " << input_filename << std::endl;
+                return 0;
+            }
+
+            std::cout << "Key length tested: ";
+            for (int key_length = 1; key_length <= configuration::max_key_length; ++key_length) {
+                std::cout << key_length << ' ';
+                key = findKey(input_file, language_histogram, key_length);
+                if (!key.empty()) {
+                    break;
+                }
+            }
+            std::cout << std::endl;
+
+            if (key.empty()) {
+                std::cout << "Key recovery failed" << std::endl;
+                return 0;
+            } else {
+                std::cout << "Key recovery successful\n" << std::endl;
+                std::ofstream key_file(key_filename);
+                if (!key_file) {
+                    std::cout << "ERROR: Unable to open key file: " << key_filename << std::endl;
+                    return 0;
+                }
+                key_file << key;
+                key_file.close();
+
+                std::ofstream output_file(output_filename);
+                if (!output_file) {
+                    std::cout << "ERROR: Unable to open output file: " << output_filename << std::endl;
+                    return 0;
+                }
+
+                decryptFile(input_file, output_file, key);
+                input_file.close();
+                output_file.close();
+            }
+
             break;
+        }
+
         default:
             std::cout << "No valid mode selected. Please use --en, --de, or --br." << std::endl;
             std::cout << configuration::manual;
