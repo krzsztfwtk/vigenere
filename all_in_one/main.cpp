@@ -60,19 +60,33 @@ int main(int argc, char* argv[]) {
     switch (mode) {
         case Mode::ENCRYPT:
             std::cout << "Encryption mode selected." << std::endl;
-
             key_file.open(key_filename);
-
+            
             if (!key_file)
             {
                 std::cout << "ERROR: There is no file: " << key_filename << std::endl;
-                successful = false;
+                return 0;
             }
+
+            encryptFile(input_file, output_file, key_file);
+            input_file.close();
+            output_file.close();
 
             break;
 
         case Mode::DECRYPT:
             std::cout << "Decryption mode selected." << std::endl;
+            key_file.open(key_filename);
+            
+            if (!key_file)
+            {
+                std::cout << "ERROR: There is no file: " << key_filename << std::endl;
+                return 0;
+            }
+
+            decryptFile(input_file, output_file, key_file);
+            input_file.close();
+            output_file.close();
             break;
             
         case Mode::BREAK: {
@@ -88,7 +102,7 @@ int main(int argc, char* argv[]) {
             if (!key_file)
             {
                 std::cout << "ERROR: There is no file: " << key_filename << std::endl;
-                successful = false;
+                return 0;
             }
 
             std::deque<int> language_histogram = histogramFromFile(source_file, 1, 0);
