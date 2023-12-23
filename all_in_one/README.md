@@ -12,17 +12,17 @@ The program is executed from the command line using the following switches (the 
 **for example:** ./main --en -i plaintext -k key -o encrypted
 
 - decrypts text files encrypted with the Vigenère method:
---de decryption flag
--i input encrypted text file
--o output plaintext file
--k key file
+- `--de` decryption flag
+- `-i` input encrypted text file
+- `-o` output plaintext file
+- `-k` key file
 **for example:** ./main --de -k key -o decrypted -i ciphertext
 
 -  breaks text files encrypted with the Vigenère method:
---br cipher breaking flag
--w input file Ensure that the (book.txt) is written in the same language as the original text that was encrypted. It is important that the book is representative of its language, preferably related to a similar field as the encrypted text, and sufficiently large to accurately represent the language.
--i input encrypted text file
--o output plaintext file
+- `--br` cipher breaking flag
+- `-w` input file Ensure that the (book.txt) is written in the same language as the original text that was encrypted. It is important that the book is representative of its language, preferably related to a similar field as the encrypted text, and sufficiently large to accurately represent the language.
+- `-i` input encrypted text file
+- `-o` output plaintext file
 **for example:** ./main --br -i ciphertext -w book.txt -k key.txt -o decrypted
 
 
