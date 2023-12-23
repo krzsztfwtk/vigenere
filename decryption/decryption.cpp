@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-//test
+
 void decrypt_file(std::ifstream& input_file, std::ofstream& output_file, std::ifstream& key_fle)
 {
     std::string key;
