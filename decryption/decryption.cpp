@@ -63,8 +63,8 @@ int main(int n, char* argv[])
         "Decrypts with the Vigenere cipher\n\n"
         "-i input file with encrypted text\n"
         "-o output file with decrypted text\n"
-        "-k input string with key\n\n"
-        "example: decryption -i encrypted_text.txt -o text.txt -k secretkey\n";
+        "-k input file with key\n\n"
+        "example: decryption -i encrypted_text.txt -o text.txt -k secret.key\n";
 
     std::string input_filename = "";
     std::string key_filename = "";

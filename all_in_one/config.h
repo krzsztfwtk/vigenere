@@ -19,18 +19,18 @@ namespace configuration
 		"\nUsage of the program:\n\n"
 		"To encrypt a text file using the Vigenère cipher:\n"
 		"--en -i <input file> -k <key file> -o <output file>\n"
-		"  --en: flag for encryption mode\n"
+		"  --en flag for encryption mode\n"
 		"  -i: input file with plain text\n"
 		"  -k: input file with the key\n"
 		"  -o: output file for the encrypted text\n"
-		"  Example: ./program --en -i plain.txt -k key.txt -o encrypted.txt\n\n"
+		"  Example: ./main --en -i plain.txt -k key.txt -o encrypted.txt\n\n"
 		"To decrypt a text file encrypted with the Vigenère cipher:\n"
 		"--de -i <input file> -k <key file> -o <output file>\n"
 		"  --de: flag for decryption mode\n"
 		"  -i: input file with encrypted text\n"
 		"  -k: input file with the key\n"
 		"  -o: output file for the decrypted text\n"
-		"  Example: ./program --de -i encrypted.txt -k key.txt -o decrypted.txt\n\n"
+		"  Example: ./main --de -i encrypted.txt -k key.txt -o decrypted.txt\n\n"
 		"To break the Vigenère cipher:\n"
 		"--br -i <input file> -w <source file> -k <output key file> -o <output file>\n"
 		"  --br: flag for breaking the cipher\n"
@@ -38,7 +38,7 @@ namespace configuration
 		"  -w: input file with text in the language of the encrypted text\n"
 		"  -k: output file for the found key\n"
 		"  -o: output file for the decrypted text\n"
-		"  Example: ./program --br -i encrypted.txt -w book.txt -k key.txt -o decrypted.txt\n\n";
+		"  Example: ./main --br -i encrypted.txt -w book.txt -k key.txt -o decrypted.txt\n\n";
 
 }
 

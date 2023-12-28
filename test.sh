@@ -4,7 +4,7 @@
 make -C encryption/
 
 # Encrypt the input file
-./encryption/encryption -i resources/frankenstein.txt -o resources/frankenstein.enc -k supersecret
+./encryption/encryption -i resources/frankenstein.txt -o resources/frankenstein.enc -k resources/example.key
 
 # Clean up the encryption module
 make -C encryption/ clean
@@ -19,5 +19,5 @@ make -C breaker/
 make -C breaker/ clean
 
 # Display the result
-echo "If everything works correctly there should have been created files /resources/frankenstein.enc frankenstein.key (here should be \"supersecret\") frankenstein.dec (here should be text exactly the same like in frankenstein.txt but without non-alpha chars)"
+echo "If everything works correctly there should have been created files /resources/frankenstein.enc frankenstein.key (here should be \"mysecret\") frankenstein.dec (here should be text exactly the same like in frankenstein.txt but without non-alpha chars)"
 
