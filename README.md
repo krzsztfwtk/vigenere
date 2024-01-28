@@ -1,4 +1,4 @@
-# Vigenère Cipher Breaker
+# Vigenère
 
 This repository is dedicated to encrypting/decrypting Vigenère Cipher and breaking it with frequency analysis.
 
